@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Warranty Reports – Simplified</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div x-data="{ mobileMenuOpen: false }" class="min-h-screen flex flex-col">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="#" class="text-2xl font-bold text-blue-600">
+                            Dell Warranty Tracker
+                        </a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#how-it-works" class="text-gray-600 hover:bg-gray-100 px-3 py-2 rounded-md">How It Works</a>
+                            <a href="#pricing" class="text-gray-600 hover:bg-gray-100 px-3 py-2 rounded-md">Pricing</a>
+                            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Start Free Trial</a>
+                        </div>
+                    </div>
+                    <!-- Mobile menu button -->
+                    <div class="-mr-2 flex md:hidden">
+                        <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="bg-gray-50 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                            <span class="sr-only">Open main menu</span>
+                            <svg x-show="!mobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg x-show="mobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div x-show="mobileMenuOpen" class="md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#how-it-works" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md">How It Works</a>
+                    <a href="#pricing" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md">Pricing</a>
+                    <a href="#" class="bg-blue-500 text-white block px-3 py-2 rounded-md hover:bg-blue-600 text-center">Start Free Trial</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Effortless Dell Warranty Tracking for Your Entire Fleet
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Upload your service tags. Get clean, formatted warranty reports. Automate tracking and renewals.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 font-bold">
+                        🟢 Try Free Now
+                    </a>
+                    <a href="#how-it-works" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 font-bold">
+                        🔵 See How It Works
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-100 p-6 rounded-lg text-center">
+                        <div class="text-5xl mb-4">1️⃣</div>
+                        <h3 class="text-xl font-semibold mb-4">Upload Your Service Tags</h3>
+                        <p>Upload a .txt file or paste a list of Dell service tags.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg text-center">
+                        <div class="text-5xl mb-4">2️⃣</div>
+                        <h3 class="text-xl font-semibold mb-4">We Pull & Format Warranty Data</h3>
+                        <p>We query Dell's official API securely, format the warranty info, and generate a CSV/PDF.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg text-center">
+                        <div class="text-5xl mb-4">3️⃣</div>
+                        <h3 class="text-xl font-semibold mb-4">Download or Schedule Reports</h3>
+                        <p>Get warranty details instantly or receive monthly health checks and renewal reminders.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who It's For -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Who It's For</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">✅</div>
+                        <h3 class="font-semibold">IT Admins</h3>
+                        <p>Managing 10–10,000+ Dell devices</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">✅</div>
+                        <h3 class="font-semibold">MSPs</h3>
+                        <p>Handling client infrastructure</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">✅</div>
+                        <h3 class="font-semibold">Organizations</h3>
+                        <p>Schools, Retail, Healthcare, SMBs</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">✅</div>
+                        <h3 class="font-semibold">Procurement Teams</h3>
+                        <p>Tracking support contracts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Pricing Plans</h2>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="bg-gray-100 p-6 rounded-lg text-center">
+                        <h3 class="text-xl font-semibold mb-4">Free</h3>
+                        <p class="text-3xl font-bold mb-4">$0/month</p>
+                        <ul class="mb-6 space-y-2">
+                            <li>10 tags/month</li>
+                            <li>Basic CSV</li>
+                        </ul>
+                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg text-center">
+                        <h3 class="text-xl font-semibold mb-4">Starter</h3>
+                        <p class="text-3xl font-bold mb-4">$10/month</p>
+                        <ul class="mb-6 space-y-2">
+                            <li>100 tags/month</li>
+                            <li>PDF export</li>
+                            <li>Email alerts</li>
+                        </ul>
+                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg text-center">
+                        <h3 class="text-xl font-semibold mb-4">Pro</h3>
+                        <p class="text-3xl font-bold mb-4">$49/month</p>
+                        <ul class="mb-6 space-y-2">
+                            <li>1000 tags</li>
+                            <li>Team access</li>
+                            <li>API</li>
+                            <li>Scheduled reports</li>
+                        </ul>
+                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg text-center">
+                        <h3 class="text-xl font-semibold mb-4">Enterprise</h3>
+                        <p class="text-3xl font-bold mb-4">Custom</p>
+                        <ul class="mb-6 space-y-2">
+                            <li>Unlimited tags</li>
+                            <li>SSO</li>
+                            <li>Azure deployment</li>
+                            <li>Dedicated support</li>
+                        </ul>
+                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Contact Us</a>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <p class="text-gray-600">Start Free Trial – no credit card required</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">🔐</div>
+                        <h3 class="font-semibold mb-2">100% Secure</h3>
+                        <p>Dell API integration with top-tier security</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">📁</div>
+                        <h3 class="font-semibold mb-2">Instant Reports</h3>
+                        <p>Downloadable warranty reports</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">📆</div>
+                        <h3 class="font-semibold mb-2">Proactive Alerts</h3>
+                        <p>Renewal reminders you can trust</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">⚙️</div>
+                        <h3 class="font-semibold mb-2">MSP Ready</h3>
+                        <p>Integrates with IT management tools</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">🧾</div>
+                        <h3 class="font-semibold mb-2">Flexible Exports</h3>
+                        <p>CSV, PDF, and Excel support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-12">What Our Customers Say</h2>
+                <div class="max-w-2xl mx-auto">
+                    <blockquote class="bg-gray-100 p-8 rounded-lg italic">
+                        "This tool saved us hours during audit season. Now we never miss warranty renewals!"
+                    </blockquote>
+                    <p class="mt-4 font-semibold">— Rajiv S., IT Head at Wipro</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Footer -->
+        <section class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-6">Still managing warranties manually?</h2>
+                <p class="text-xl mb-8">Let our platform do it for you.</p>
+                <div class="flex justify-center space-x-4 mb-6">
+                    <a href="#" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 font-bold">
+                        👉 Upload Your Tags & Get a Report
+                    </a>
+                </div>
+                <p class="text-gray-200">Have questions? <a href="mailto:support@yourdomain.com" class="underline">support@yourdomain.com</a></p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="font-bold mb-4">Dell Warranty Tracker</h3>
+                        <p class="text-gray-400">Simplifying Dell warranty management for IT professionals.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Product</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#how-it-works" class="text-gray-300 hover:text-white">How It Works</a></li>
+                            <li><a href="#pricing" class="text-gray-300 hover:text-white">Pricing</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Start Free Trial</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Support</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white">Help Center</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Contact Support</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">API Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                    <p class="text-gray-400">&copy; 2024 Dell Warranty Tracker. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
