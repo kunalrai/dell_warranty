@@ -45,7 +45,6 @@ jobs:
       uses: azure/appservice-settings@v1
       with:
         app-name: dell-warranty
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
         app-settings-json: |
           [
              {
@@ -57,7 +56,6 @@ jobs:
       uses: azure/appservice-settings@v1
       with:
         app-name: dell-warranty
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
         app-settings-json: |
           [
              {
@@ -73,7 +71,6 @@ jobs:
       uses: azure/appservice-settings@v1
       with:
         app-name: dell-warranty
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
         general-settings-json: |
           {
             "startupCommand": "gunicorn --bind=0.0.0.0 --timeout 600 app:app"
