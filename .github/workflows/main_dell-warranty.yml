@@ -19,11 +19,6 @@ jobs:
       with:
         python-version: '3.12'
 
-    - name: Create and activate virtual environment
-      run: |
-        python -m venv .venv
-        source .venv/bin/activate
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -40,38 +35,3 @@ jobs:
         slot-name: Production
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
         package: app.zip
-
-    - name: Set app setting for build automation
-      uses: azure/appservice-settings@v1
-      with:
-        app-name: dell-warranty
-        app-settings-json: |
-          [
-             {
-              "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
-              "value": "true"
-            }
-          ]
-    - name: Set startup command
-      uses: azure/appservice-settings@v1
-      with:
-        app-name: dell-warranty
-        app-settings-json: |
-          [
-             {
-              "name": "WEBSITE_RUN_FROM_PACKAGE",
-              "value": "1"
-            },
-            {
-              "name": "WEBSITE_PORT",
-              "value": "8000"
-            }
-          ]
-    - name: Configure Startup command
-      uses: azure/appservice-settings@v1
-      with:
-        app-name: dell-warranty
-        general-settings-json: |
-          {
-            "startupCommand": "gunicorn --bind=0.0.0.0 --timeout 600 app:app"
-          }
