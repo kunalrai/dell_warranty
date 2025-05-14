@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory
 import os
 from werkzeug.utils import secure_filename
-#from dell_support import load_service_tags, get_token, get_warranty, save_warranty_to_csv
+from dell_support import load_service_tags, get_token, get_warranty, save_warranty_to_csv
 
 app = Flask(__name__)
 # app.secret_key = 'your_secret_key'
