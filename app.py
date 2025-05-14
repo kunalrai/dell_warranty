@@ -1,4 +1,6 @@
 from flask import Flask, request, render_template, redirect, send_file, url_for, flash, send_from_directory
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import os
 from werkzeug.utils import secure_filename
 from dell_support import load_service_tags, get_token, get_warranty, save_warranty_to_csv
@@ -9,6 +11,7 @@ app.secret_key = 'your_secret_key'
 UPLOAD_FOLDER = 'uploads'
 REPORTS_FOLDER = 'reports'
 
+limiter = Limiter(get_remote_address, app=app, default_limits=["5 per day", "5 per minute"])
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(REPORTS_FOLDER, exist_ok=True)
@@ -50,49 +53,19 @@ def upload():
     return render_template("upload.html")
 
 
-# def process_tags_to_csv(tag_file, output_csv):
-#     tags = load_service_tags(tag_file)
-#     token = get_token()
-#     warranty_data = get_warranty(tags, token)
-#     save_warranty_to_csv(warranty_data, output_csv)
 
-# @app.route("/", methods=["GET", "POST"])
-# def index():
-#     download_url = None
-#     if request.method == "POST":
-#         file = request.files.get("file")
-#         if file and file.filename.endswith(".txt"):
-#             filename = secure_filename(file.filename)
-#             upload_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-#             file.save(upload_path)
-
-#             report_filename = filename.replace(".txt", ".csv")
-#             report_path = os.path.join(app.config['REPORT_FOLDER'], report_filename)
-
-#             try:
-#                 process_tags_to_csv(upload_path, report_path)
-#                 flash("✅ Warranty report generated!")
-#                 download_url = url_for('download_file', filename=report_filename)
-#             except Exception as e:
-#                 flash(f"❌ Error: {str(e)}")
-#         else:
-#             flash("⚠️ Please upload a valid .txt file.")
-#     return render_template("index.html", download_url=download_url)
-    
-
-# @app.route("/", methods=["GET", "POST"])
-# def index():
-#     return render_template("index.html")
 
 @app.route("/download/<filename>")
 def download_file(filename):
     return send_from_directory(app.config['REPORT_FOLDER'], filename, as_attachment=True)
 
 @app.route("/health")
+@limiter.exempt
 def health():
     return "OK", 200
 
 @app.route("/")
+@limiter.exempt
 def home():
     return render_template("home.html") 
 @app.route("/how-it-works")
