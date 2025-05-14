@@ -1,49 +1,49 @@
-from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory
+from flask import Flask, request, render_template, redirect, send_file, url_for, flash, send_from_directory
 import os
 from werkzeug.utils import secure_filename
 from dell_support import load_service_tags, get_token, get_warranty, save_warranty_to_csv
 
 app = Flask(__name__)
-# app.secret_key = 'your_secret_key'
+app.secret_key = 'your_secret_key'
 
-# UPLOAD_FOLDER = 'uploads'
-# REPORTS_FOLDER = 'reports'
+UPLOAD_FOLDER = 'uploads'
+REPORTS_FOLDER = 'reports'
 
 
-# os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-# os.makedirs(REPORTS_FOLDER, exist_ok=True)
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(REPORTS_FOLDER, exist_ok=True)
 
-# @app.route("/upload", methods=["GET", "POST"])
-# def upload():
-#     if request.method == "POST":
-#         file = request.files.get("tags_file")
-#         if not file or not file.filename.endswith(".txt"):
-#             return render_template("upload.html", error="Please upload a valid .txt file.")
+@app.route("/upload", methods=["GET", "POST"])
+def upload():
+    if request.method == "POST":
+        file = request.files.get("tags_file")
+        if not file or not file.filename.endswith(".txt"):
+            return render_template("upload.html", error="Please upload a valid .txt file.")
 
-#         filename = file.filename
-#         filepath = os.path.join(UPLOAD_FOLDER, filename)
-#         file.save(filepath)
+        filename = file.filename
+        filepath = os.path.join(UPLOAD_FOLDER, filename)
+        file.save(filepath)
 
-#         try:
-#             # Step 1: Load tags from uploaded file
-#             tags = load_service_tags(filepath)
+        try:
+            # Step 1: Load tags from uploaded file
+            tags = load_service_tags(filepath)
 
-#             # Step 2: Get OAuth token
-#             token = get_token()
+            # Step 2: Get OAuth token
+            token = get_token()
 
-#             # Step 3: Fetch warranty data
-#             data = get_warranty(tags, token)
+            # Step 3: Fetch warranty data
+            data = get_warranty(tags, token)
 
-#             # Step 4: Save to CSV
-#             report_path = os.path.join(REPORTS_FOLDER, "warranty_report.csv")
-#             save_warranty_to_csv(data, report_path)
+            # Step 4: Save to CSV
+            report_path = os.path.join(REPORTS_FOLDER, "warranty_report.csv")
+            save_warranty_to_csv(data, report_path)
 
-#             return send_file(report_path, as_attachment=True)
+            return send_file(report_path, as_attachment=True)
 
-#         except Exception as e:
-#             return render_template("upload.html", error=f"❌ Failed to generate report: {e}")
+        except Exception as e:
+            return render_template("upload.html", error=f"❌ Failed to generate report: {e}")
 
-#     return render_template("upload.html")
+    return render_template("upload.html")
 
 # def process_tags_to_csv(tag_file, output_csv):
 #     tags = load_service_tags(tag_file)
