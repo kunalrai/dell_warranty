@@ -79,22 +79,44 @@ def save_warranty_to_csv(data, filename):
         model = asset.get('productLineDescription')
         ship_date = asset.get('shipDate')
         entitlements = asset.get('entitlements', [])
-        
-        # Prioritize EXTENDED over INITIAL
-        extended = [e for e in entitlements if e.get('entitlementType') == 'EXTENDED']
-        use_entitlements = extended if extended else entitlements
-        
-        for ent in use_entitlements:
+
+        # Extract INITIAL and EXTENDED separately
+        initial = next((e for e in entitlements if e.get('entitlementType') == 'INITIAL'), None)
+        extended = next((e for e in entitlements if e.get('entitlementType') == 'EXTENDED'), None)
+
+        # Compose a unified row using INITIAL start and EXTENDED end
+        if initial and extended:
             rows.append({
                 'ServiceTag': tag,
                 'Model': model,
                 'ShipDate': ship_date,
-                'EntitlementType': ent.get('entitlementType'),
-                'ItemNumber': ent.get('itemNumber'),
-                'StartDate': format_date(ent.get('startDate', '')),
-                'EndDate': format_date(ent.get('endDate', '')),
-                'ServiceLevelCode': ent.get('serviceLevelCode'),
-                
+                'EntitlementType': 'EXTENDED',
+                'ItemNumber': extended.get('itemNumber'),
+                'StartDate': format_date(initial.get('startDate', '')),
+                'EndDate': format_date(extended.get('endDate', '')),
+                'ServiceLevelCode': extended.get('serviceLevelCode'),
+            })
+        elif extended:
+            rows.append({
+                'ServiceTag': tag,
+                'Model': model,
+                'ShipDate': ship_date,
+                'EntitlementType': 'EXTENDED',
+                'ItemNumber': extended.get('itemNumber'),
+                'StartDate': format_date(extended.get('startDate', '')),
+                'EndDate': format_date(extended.get('endDate', '')),
+                'ServiceLevelCode': extended.get('serviceLevelCode'),
+            })
+        elif initial:
+            rows.append({
+                'ServiceTag': tag,
+                'Model': model,
+                'ShipDate': ship_date,
+                'EntitlementType': 'INITIAL',
+                'ItemNumber': initial.get('itemNumber'),
+                'StartDate': format_date(initial.get('startDate', '')),
+                'EndDate': format_date(initial.get('endDate', '')),
+                'ServiceLevelCode': initial.get('serviceLevelCode'),
             })
 
     with open(filename, 'w', newline='') as f:
@@ -105,6 +127,7 @@ def save_warranty_to_csv(data, filename):
         writer.writerows(rows)
 
     print(f"\n✅ Warranty report saved to: {filename}")
+
 
 
 # === PRINT TO CONSOLE ===
