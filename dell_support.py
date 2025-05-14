@@ -4,6 +4,8 @@ import json
 import csv
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 # === CONFIGURATION ===
 CLIENT_ID = os.environ.get('DELL_CLIENT_ID')
