@@ -6,8 +6,8 @@ import requests
 from datetime import datetime
 
 # === CONFIGURATION ===
-CLIENT_ID = 'l7fc80983c735d492fb34ae0e224f59224'
-CLIENT_SECRET = '816239b20e404a75972aac6bbe4d8c65'
+CLIENT_ID = os.environ.get('DELL_CLIENT_ID')
+CLIENT_SECRET = os.environ.get('DELL_CLIENT_SECRET')
 TOKEN_FILE = 'dell_token_cache.json'
 TAGS_FILE = 'tags.txt'
 CSV_FILE = 'warranty_report.csv'

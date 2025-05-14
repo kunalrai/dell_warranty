@@ -13,6 +13,12 @@ REPORTS_FOLDER = 'reports'
 
 limiter = Limiter(get_remote_address, app=app, default_limits=["5 per day", "5 per minute"])
 
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    flash("🔒 You’ve reached the free limit. Please buy a license to continue.")
+    return redirect(url_for("pricing"))
+
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(REPORTS_FOLDER, exist_ok=True)
 
@@ -73,6 +79,7 @@ def how_it_works():
     return render_template("how_it_works.html")
 
 @app.route("/pricing")
+@limiter.exempt
 def pricing():
     return render_template("pricing_cards.html")
 
