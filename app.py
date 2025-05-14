@@ -28,6 +28,10 @@ def upload():
             # Step 1: Load tags from uploaded file
             tags = load_service_tags(filepath)
 
+            # Enforce license check
+            if len(tags) > 5:
+                return render_template("upload.html", error="🔒 Please buy a license to check more than 5 service tags.")
+
             # Step 2: Get OAuth token
             token = get_token()
 
@@ -44,6 +48,7 @@ def upload():
             return render_template("upload.html", error=f"❌ Failed to generate report: {e}")
 
     return render_template("upload.html")
+
 
 # def process_tags_to_csv(tag_file, output_csv):
 #     tags = load_service_tags(tag_file)
