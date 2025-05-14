@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}How It Works – Dell Warranty Tracker{% endblock %}
+
+{% block content %}
+<section class="py-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-bold text-center mb-12">How It Works</h2>
+
+    <div class="space-y-12">
+      <!-- Step 1 -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row items-start md:items-center">
+        <div class="text-5xl text-blue-500 mr-6">1️⃣</div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">Upload Your Service Tags</h3>
+          <p class="text-gray-600">Simply upload a <code>.txt</code> file or paste a list of Dell service tags into the platform. You can also schedule recurring uploads.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row items-start md:items-center">
+        <div class="text-5xl text-blue-500 mr-6">2️⃣</div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">We Pull & Format Warranty Data</h3>
+          <p class="text-gray-600">Our backend securely calls Dell’s official API to fetch warranty entitlements, normalizes the data, and formats it into easy-to-read CSV or PDF reports.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row items-start md:items-center">
+        <div class="text-5xl text-blue-500 mr-6">3️⃣</div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">Download or Schedule Reports</h3>
+          <p class="text-gray-600">Download detailed warranty reports instantly or configure automated monthly summaries, email reminders, and contract expiry alerts.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center">
+      <a href="{{ url_for('home') }}" class="inline-block bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-bold hover:bg-green-600">
+        👉 Start Tracking Now
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

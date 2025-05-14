@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Pricing – Dell Warranty Tracker{% endblock %}
+
+{% block content %}
+<section class="py-16 bg-white">
+  <h2 class="text-3xl font-bold text-center mb-12">Pricing Plans</h2>
+
+  <div class="grid md:grid-cols-4 gap-6">
+  <!-- Free Plan -->
+  <div class="bg-gray-100 p-6 rounded-lg text-center shadow flex flex-col">
+    <h3 class="text-xl font-semibold mb-4">Free</h3>
+    <p class="text-3xl font-bold mb-4">$0/month</p>
+    <ul class="mb-6 space-y-2">
+      <li>10 tags/month</li>
+      <li>Basic CSV</li>
+    </ul>
+    <div class="mt-auto">
+      <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
+    </div>
+  </div>
+
+  <!-- Starter Plan -->
+  <div class="bg-gray-100 p-6 rounded-lg text-center shadow flex flex-col">
+    <h3 class="text-xl font-semibold mb-4">Starter</h3>
+    <p class="text-3xl font-bold mb-4">$10/month</p>
+    <ul class="mb-6 space-y-2">
+      <li>100 tags/month</li>
+      <li>PDF export</li>
+      <li>Email alerts</li>
+    </ul>
+    <div class="mt-auto">
+      <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
+    </div>
+  </div>
+
+  <!-- Pro Plan -->
+  <div class="bg-gray-100 p-6 rounded-lg text-center shadow flex flex-col">
+    <h3 class="text-xl font-semibold mb-4">Pro</h3>
+    <p class="text-3xl font-bold mb-4">$49/month</p>
+    <ul class="mb-6 space-y-2">
+      <li>1000 tags</li>
+      <li>Team access</li>
+      <li>API access</li>
+      <li>Scheduled reports</li>
+    </ul>
+    <div class="mt-auto">
+      <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
+    </div>
+  </div>
+
+  <!-- Enterprise Plan -->
+  <div class="bg-gray-100 p-6 rounded-lg text-center shadow flex flex-col">
+    <h3 class="text-xl font-semibold mb-4">Enterprise</h3>
+    <p class="text-3xl font-bold mb-4">Custom</p>
+    <ul class="mb-6 space-y-2">
+      <li>Unlimited tags</li>
+      <li>SSO integration</li>
+      <li>Azure deployment</li>
+      <li>Dedicated support</li>
+    </ul>
+    <div class="mt-auto">
+      <a href="mailto:support@yourdomain.com" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+
+  <div class="text-center mt-8">
+    <p class="text-gray-600">Start Free Trial – no credit card required</p>
+  </div>
+</section>
+{% endblock %}
