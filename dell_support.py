@@ -139,7 +139,7 @@ def display_warranty(data):
         print(f"Model: {asset.get('productLineDescription')}")
         print(f"Ship Date: {asset.get('shipDate')}")
         for ent in asset.get('entitlements', []):
-            print(f"  {ent['entitlementType']} | {ent['startDate']} → {ent['endDate']} | {ent['serviceLevelDescription']}")
+            print(f"  {ent['entitlementType']} | {ent['startDate']} | {ent['endDate']} | {ent['serviceLevelDescription']}")
 
 
 # === MAIN ===
