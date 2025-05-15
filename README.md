@@ -5,6 +5,7 @@ A tool for retrieving warranty information for Dell products using service tags 
 ![image](https://github.com/user-attachments/assets/65301104-90f6-431d-afc3-424e2ee89a52)
 ![image](https://github.com/user-attachments/assets/e424d180-b469-46a2-8acb-738c23d31156)
 ![image](https://github.com/user-attachments/assets/6dee58c4-1cc1-4469-ae44-bc7afd064c5a)
+![image](https://github.com/user-attachments/assets/cb3cec11-67ca-42d5-b015-3c69895d1986)
 
 
 ## Features
