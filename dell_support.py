@@ -128,7 +128,7 @@ def save_warranty_to_csv(data, filename):
         writer.writeheader()
         writer.writerows(rows)
 
-    print(f"\nWarranty report saved to: {filename}")
+    print(f"\nWarranty report saved to: {filename}" )
 
 
 
