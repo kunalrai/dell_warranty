@@ -128,7 +128,7 @@ def save_warranty_to_csv(data, filename):
         writer.writeheader()
         writer.writerows(rows)
 
-    print(f"\n✅ Warranty report saved to: {filename}")
+    print(f"\nWarranty report saved to: {filename}")
 
 
 
@@ -151,4 +151,4 @@ if __name__ == '__main__':
         display_warranty(warranty_data)
         save_warranty_to_csv(warranty_data, CSV_FILE)
     except Exception as e:
-        print("❌ Error:", e)
+        print("Error:", e)
