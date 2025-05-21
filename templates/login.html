@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto my-8 p-4">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6 text-center">
+        <h1 class="text-2xl font-bold mb-6">Log in to your account</h1>
+        
+        <div id="clerk-sign-in"></div>
+    </div>
+</div>
+
+<script src="https://js.clerk.dev/v1/clerk.js"></script>
+<script>
+  window.addEventListener('load', async function() {
+    const clerk = window.Clerk('{{ clerk_publishable_key }}');
+    
+    await clerk.load();
+    
+    if (clerk.user) {
+      // User is already signed in, redirect to dashboard
+      window.location.href = '/upload';
+    } else {
+      // Mount sign-in component
+      const signInDiv = document.getElementById('clerk-sign-in');
+      clerk.mountSignIn(signInDiv);
+    }
+  });
+</script>
+{% endblock %}

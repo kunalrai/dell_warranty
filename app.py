@@ -11,6 +11,11 @@ app.secret_key = 'your_secret_key'
 UPLOAD_FOLDER = 'uploads'
 REPORTS_FOLDER = 'reports'
 
+# Clerk Configuration
+CLERK_SECRET_KEY = os.environ.get('CLERK_SECRET_KEY')
+CLERK_PUBLISHABLE_KEY = os.environ.get('CLERK_PUBLISHABLE_KEY')
+CLERK_API_URL = "https://api.clerk.dev/v1"
+
 limiter = Limiter(get_remote_address, app=app, default_limits=["5 per day", "5 per minute"])
 
 
@@ -87,6 +92,11 @@ def pricing():
 @limiter.exempt
 def policies():
     return render_template("policies.html")
+
+@app.route("/login")
+@limiter.exempt
+def login():
+    return render_template("login.html")
 
 
 
