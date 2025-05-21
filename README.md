@@ -1,4 +1,4 @@
-# Dell Warranty Checker
+# Dell Warranty Checker1.0
 
 A tool for retrieving warranty information for Dell products using service tags without using Dell's web interface. https://dell-warranty.azurewebsites.net
 ![image](https://github.com/user-attachments/assets/79761f2b-5f81-4564-8165-8441979ac3fa)
