@@ -5,6 +5,23 @@
                 <a href="{{ url_for('how_it_works') }}" class="text-gray-600 hover:text-blue-600">How It Works</a>
                 <a href="{{ url_for('pricing') }}" class="text-gray-600 hover:text-blue-600">Pricing</a>
                 <a href="{{ url_for('upload') }}" class="text-white bg-blue-500 px-4 py-1 rounded hover:bg-blue-600">Start Free Trial</a>
+                
+                <!-- Policy dropdown - Option 1: Using Alpine.js that's already in your base.html -->
+                <div x-data="{ open: false }" class="relative">
+                    <button @click="open = !open" @click.away="open = false" class="text-gray-600 hover:text-blue-600">
+                        Policies
+                        <svg class="h-4 w-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div x-show="open" class="absolute z-10 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
+                        <a href="{{ url_for('policies') }}#contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+                        <a href="{{ url_for('policies') }}#terms" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+                        <a href="{{ url_for('policies') }}#privacy" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Privacy Policy</a>
+                        <a href="{{ url_for('policies') }}#shipping" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Shipping Policy</a>
+                        <a href="{{ url_for('policies') }}#cancellations" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cancellations & Refunds</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

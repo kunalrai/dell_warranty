@@ -83,6 +83,11 @@ def how_it_works():
 def pricing():
     return render_template("pricing_cards.html")
 
+@app.route("/policies")
+@limiter.exempt
+def policies():
+    return render_template("policies.html")
+
 
 
 if __name__ == "__main__":
