@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /upload
+Disallow: /admin
+Disallow: /api
+Disallow: /config
+
+Allow: /
