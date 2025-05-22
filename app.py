@@ -98,6 +98,9 @@ def policies():
 def login():
     return render_template("login.html")
 
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
 
 
 if __name__ == "__main__":
