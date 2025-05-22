@@ -106,6 +106,18 @@ def sitemap():
 def robots_txt():
     return send_from_directory('static', 'robots.txt')
 
+@app.route("/checkout")
+def checkout():
+    plan = request.args.get("plan", "free")
+    return render_template("checkout.html", plan=plan)
+
+@app.route("/purchase", methods=["POST"])
+def purchase():
+    plan = request.form.get("plan")
+    # TODO: Add your payment gateway integration or license assignment here
+    # For now, just redirect to pricing page with a flash message or confirmation
+    flash(f"Purchase flow for {plan} plan is not implemented yet.", "info")
+    return redirect(url_for("pricing"))
 
 if __name__ == "__main__":
     app.run(debug=True)
