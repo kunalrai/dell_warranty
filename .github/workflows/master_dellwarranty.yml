@@ -45,6 +45,6 @@ jobs:
     - name: 'Deploy to Azure Web App2'
       uses: azure/webapps-deploy@v2
       with: 
-        app-name: 'dellwarranty'
+        app-name: 'dell-warranty'
         slot-name: 'production'
         publish-profile: ${{ secrets.BD_AZURE }}
