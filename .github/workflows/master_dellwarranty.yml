@@ -42,10 +42,12 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_912f179b6378449d8e7fb10dc99535c6 }}
 
+    - name: 'Clean before deploy'
+      run: rm -rf .git
+
     - name: 'Deploy to Azure Web App2'
       uses: azure/webapps-deploy@v2
       with: 
         app-name: 'dell-warranty'
-        slot-name: 'production'
+        slot-name: 'production' 
         publish-profile: ${{ secrets.BD_AZURE }}
-        clean: true
