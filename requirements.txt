@@ -2,3 +2,5 @@ flask
 requests
 flask-limiter
 python-dotenv
+razorpay
+flask_cors
