@@ -48,3 +48,4 @@ jobs:
         app-name: 'dell-warranty'
         slot-name: 'production'
         publish-profile: ${{ secrets.BD_AZURE }}
+        clean: true
