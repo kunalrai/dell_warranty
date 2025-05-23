@@ -39,7 +39,7 @@ RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET')
 # Debug environment variables
 print(f"Current working directory: {os.getcwd()}")
 print(f"Loading .env from: {dotenv_path}")
-print(f"RAZORPAY_KEY_SECRET from env: {RAZORPAY_KEY_SECRET}")
+print(f"RAZORPAY_KEY_SECRET  from env: {RAZORPAY_KEY_SECRET}")
 
 rz_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 
