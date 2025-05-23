@@ -162,7 +162,7 @@ def create_order():
         plan = request.form.get("plan") or request.args.get("plan")
     
     print(f"Creating order for plan: {plan}")
-    amounts = {"starter": 50000, "pro": 150000, "enterprise": 1000000}  # in paise
+    amounts = {"starter": 500, "pro": 150000, "enterprise": 1000000}  # in paise
     
     if not plan:
         return jsonify({"error": "No plan specified"}), 400
