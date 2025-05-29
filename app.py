@@ -130,7 +130,7 @@ def login():
 def sitemap():
     return send_from_directory('static', 'sitemap.xml')
 
-@app.route('/robots.txt')
+@app.route('/static/robots.txt')
 
 def robots_txt():
     return send_from_directory('static', 'robots.txt')
