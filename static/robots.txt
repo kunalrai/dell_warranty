@@ -1,7 +1,3 @@
 User-agent: *
-Disallow: /upload
-Disallow: /admin
-Disallow: /api
-Disallow: /config
-
 Allow: /
+Sitemap: https://dell-warranty.azurewebsites.net/sitemap.xml
