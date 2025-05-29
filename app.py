@@ -135,6 +135,10 @@ def sitemap():
 def robots_txt():
     return send_from_directory('static', 'robots.txt')
 
+@app.route("/googlee73dd27613e2faf4.html")
+def google_verification():
+    return send_from_directory('static', 'googlee73dd27613e2faf4.html')
+
 @app.route("/checkout")
 
 def checkout():
