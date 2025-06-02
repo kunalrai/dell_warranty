@@ -70,8 +70,8 @@ def upload():
             tags = load_service_tags(filepath)
 
             # Enforce license check
-            if len(tags) > 5:
-                return render_template("upload.html", error="Please buy a license to check more than 5 service tags.")
+            if len(tags) > 100:
+                return render_template("upload.html", error="Please buy a license to check more than 100 service tags.")
 
             # Step 2: Get OAuth token
             token = get_token()
