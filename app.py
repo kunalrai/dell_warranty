@@ -43,7 +43,7 @@ print(f"RAZORPAY_KEY_SECRET  from env: {RAZORPAY_KEY_SECRET}")
 
 rz_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 
-limiter = Limiter(get_remote_address, app=app, default_limits=["100 per day", "100 per minute"])
+limiter = Limiter(get_remote_address, app=app, default_limits=["1000 per day", "1000 per minute"])
 
 
 @app.errorhandler(429)
