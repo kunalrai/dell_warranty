@@ -22,7 +22,7 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Token and tag files
-dell_token_cache.json
+
 tags.txt
 
 # Output files
