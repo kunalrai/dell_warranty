@@ -28,6 +28,9 @@ tags.txt
 # Output files
 *.zip
 *.csv
+*.old
+*.bak
+
 warranty_report.csv
 
 # Unit test / coverage
