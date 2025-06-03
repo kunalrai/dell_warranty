@@ -1,9 +1,9 @@
 <nav class="bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-12 items-center">
-            <div class="flex space-x-6">
+        <div class="flex justify-between h-12 items-center">            <div class="flex space-x-6">
                 <a href="{{ url_for('how_it_works') }}" class="text-gray-600 hover:text-blue-600">How It Works</a>
                 <a href="{{ url_for('pricing') }}" class="text-gray-600 hover:text-blue-600">Pricing</a>
+                <a href="{{ url_for('dashboard') }}" class="text-gray-600 hover:text-blue-600">Dashboard</a>
                 <a href="{{ url_for('upload') }}" class="text-white bg-blue-500 px-4 py-1 rounded hover:bg-blue-600">Start Free Trial</a>
                 
                 <!-- Policy dropdown - Option 1: Using Alpine.js that's already in your base.html -->
@@ -21,7 +21,10 @@
                         <a href="{{ url_for('policies') }}#shipping" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Shipping Policy</a>
                         <a href="{{ url_for('policies') }}#cancellations" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cancellations & Refunds</a>
                     </div>
-                </div>
+                </div>            </div>
+            <!-- Right side navigation -->
+            <div class="flex items-center space-x-4">
+                <a href="{{ url_for('login') }}" class="text-gray-600 hover:text-blue-600">Login</a>
             </div>
         </div>
     </div>

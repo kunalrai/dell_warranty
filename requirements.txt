@@ -5,3 +5,10 @@ python-dotenv
 razorpay
 flask_cors
 setuptools
+pandas
+plotly
+flask-sqlalchemy
+apscheduler
+gunicorn
+celery
+redis
