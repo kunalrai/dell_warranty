@@ -1,279 +1,556 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dell Warranty Reports – Simplified</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-</head>
-<body class="bg-gray-50 text-gray-900">
-    <div x-data="{ mobileMenuOpen: false }" class="min-h-screen flex flex-col">
-        <!-- Navigation -->
-        <nav class="bg-white shadow-md">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center">
-                        <a href="#" class="text-2xl font-bold text-blue-600">
-                            Dell Warranty Tracker
-                        </a>
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-dark to-gray-900 z-0"></div>
+    <div class="container mx-auto px-4 z-10">
+        <div class="text-center mb-8">
+            <div class="inline-block bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <span class="text-yellow-300">✨</span> 
+                <span class="text-white">Slot's Available for June</span>
+                <span class="ml-1 text-gray-400">→</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                Build and Validate in <br class="hidden md:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">21 Days</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8">We move fast, build lean and Validate.</p>
+            <a href="#contact" class="cta-button text-white font-medium py-3 px-8 rounded-full text-lg inline-block">
+                Book a Call
+            </a>
+        </div>
+    </div>
+    
+    <!-- Background grid effect -->
+    <div class="absolute inset-0 bg-[url('{{ url_for('static', filename='images/grid.svg') }}')] bg-center opacity-20 z-0"></div>
+</section>
+
+<!-- Second Hero Section - Move at Startup Speed -->
+<section class="py-20 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                Move at Startup Speed
+            </h2>
+            <p class="text-xl text-gray-300">We move fast, build lean and Validate.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+                <blockquote class="text-xl md:text-2xl font-light italic text-gray-300 mb-6">
+                    "I've seen too many founders burn months (and way too much money) just trying to get an MVP off the ground. We don't do that here. We move fast, build lean, and deliver a working MVP in under a month so you can start validating, not waiting."
+                </blockquote>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-teal-400"></div>
+                    <div class="ml-4">
+                        <p class="font-medium">John Smith</p>
+                        <p class="text-sm text-gray-400">Founding Engineer, MVP Way</p>
                     </div>
-                    <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#how-it-works" class="text-gray-600 hover:bg-gray-100 px-3 py-2 rounded-md">How It Works</a>
-                            <a href="#pricing" class="text-gray-600 hover:bg-gray-100 px-3 py-2 rounded-md">Pricing</a>
-                            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Start Free Trial</a>
+                </div>
+            </div>
+            
+            <div class="order-1 lg:order-2 grid grid-cols-1 gap-6">
+                <div class="feature-card p-6 rounded-xl">
+                    <div class="flex items-start">
+                        <div class="text-3xl mr-4">🏢</div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Core Features & Market Validation</h3>
+                            <p class="text-gray-300">We focus on building Core Features and getting started with Market Validation, then iterate and build over the user's feedback to build a product that is scalable and future-proof.</p>
                         </div>
                     </div>
-                    <!-- Mobile menu button -->
-                    <div class="-mr-2 flex md:hidden">
-                        <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="bg-gray-50 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-                            <span class="sr-only">Open main menu</span>
-                            <svg x-show="!mobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                            <svg x-show="mobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
+                </div>
+                
+                <div class="feature-card p-6 rounded-xl">
+                    <div class="flex items-start">
+                        <div class="text-3xl mr-4">🔥</div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Fast & Scalable MVP Development</h3>
+                            <p class="text-gray-300">From Idea to MVP – Fast & Scalable. Turn your concepts into functional MVPs, ensuring market validation and seamless scalability.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card p-6 rounded-xl">
+                    <div class="flex items-start">
+                        <div class="text-3xl mr-4">🧑‍💻</div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Modern Technology Stack</h3>
+                            <p class="text-gray-300">Leverage the best modern technologies like Flask, Tailwind CSS, and PostgreSQL to ensure high-performance, scalable, and future-proof MVP development.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card p-6 rounded-xl">
+                    <div class="flex items-start">
+                        <div class="text-3xl mr-4">📄</div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Proper Documentation</h3>
+                            <p class="text-gray-300">Proper documentation ensures project scalability and smooth developer collaboration. We provide clear API documentation, a detailed tech stack guide, and ERDs for easy data flow.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Mobile menu -->
-            <div x-show="mobileMenuOpen" class="md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#how-it-works" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md">How It Works</a>
-                    <a href="#pricing" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md">Pricing</a>
-                    <a href="#" class="bg-blue-500 text-white block px-3 py-2 rounded-md hover:bg-blue-600 text-center">Start Free Trial</a>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Hero Section -->
-        <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
-                    Effortless Dell Warranty Tracking for Your Entire Fleet
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                    Upload your service tags. Get clean, formatted warranty reports. Automate tracking and renewals.
-                </p>
-                <div class="flex justify-center space-x-4">
-                    <a href="#" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 font-bold">
-                        🟢 Try Free Now
-                    </a>
-                    <a href="#how-it-works" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 font-bold">
-                        🔵 See How It Works
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <!-- How It Works -->
-        <section id="how-it-works" class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-gray-100 p-6 rounded-lg text-center">
-                        <div class="text-5xl mb-4">1️⃣</div>
-                        <h3 class="text-xl font-semibold mb-4">Upload Your Service Tags</h3>
-                        <p>Upload a .txt file or paste a list of Dell service tags.</p>
-                    </div>
-                    <div class="bg-gray-100 p-6 rounded-lg text-center">
-                        <div class="text-5xl mb-4">2️⃣</div>
-                        <h3 class="text-xl font-semibold mb-4">We Pull & Format Warranty Data</h3>
-                        <p>We query Dell's official API securely, format the warranty info, and generate a CSV/PDF.</p>
-                    </div>
-                    <div class="bg-gray-100 p-6 rounded-lg text-center">
-                        <div class="text-5xl mb-4">3️⃣</div>
-                        <h3 class="text-xl font-semibold mb-4">Download or Schedule Reports</h3>
-                        <p>Get warranty details instantly or receive monthly health checks and renewal reminders.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Who It's For -->
-        <section class="py-16 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12">Who It's For</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">✅</div>
-                        <h3 class="font-semibold">IT Admins</h3>
-                        <p>Managing 10–10,000+ Dell devices</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">✅</div>
-                        <h3 class="font-semibold">MSPs</h3>
-                        <p>Handling client infrastructure</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">✅</div>
-                        <h3 class="font-semibold">Organizations</h3>
-                        <p>Schools, Retail, Healthcare, SMBs</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">✅</div>
-                        <h3 class="font-semibold">Procurement Teams</h3>
-                        <p>Tracking support contracts</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing -->
-        <section id="pricing" class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12">Pricing Plans</h2>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="bg-gray-100 p-6 rounded-lg text-center">
-                        <h3 class="text-xl font-semibold mb-4">Free</h3>
-                        <p class="text-3xl font-bold mb-4">$0/month</p>
-                        <ul class="mb-6 space-y-2">
-                            <li>10 tags/month</li>
-                            <li>Basic CSV</li>
-                        </ul>
-                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
-                    </div>
-                    <div class="bg-gray-100 p-6 rounded-lg text-center">
-                        <h3 class="text-xl font-semibold mb-4">Starter</h3>
-                        <p class="text-3xl font-bold mb-4">$10/month</p>
-                        <ul class="mb-6 space-y-2">
-                            <li>100 tags/month</li>
-                            <li>PDF export</li>
-                            <li>Email alerts</li>
-                        </ul>
-                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
-                    </div>
-                    <div class="bg-gray-100 p-6 rounded-lg text-center">
-                        <h3 class="text-xl font-semibold mb-4">Pro</h3>
-                        <p class="text-3xl font-bold mb-4">$49/month</p>
-                        <ul class="mb-6 space-y-2">
-                            <li>1000 tags</li>
-                            <li>Team access</li>
-                            <li>API</li>
-                            <li>Scheduled reports</li>
-                        </ul>
-                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Select Plan</a>
-                    </div>
-                    <div class="bg-gray-100 p-6 rounded-lg text-center">
-                        <h3 class="text-xl font-semibold mb-4">Enterprise</h3>
-                        <p class="text-3xl font-bold mb-4">Custom</p>
-                        <ul class="mb-6 space-y-2">
-                            <li>Unlimited tags</li>
-                            <li>SSO</li>
-                            <li>Azure deployment</li>
-                            <li>Dedicated support</li>
-                        </ul>
-                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 block">Contact Us</a>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <p class="text-gray-600">Start Free Trial – no credit card required</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us -->
-        <section class="py-16 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">🔐</div>
-                        <h3 class="font-semibold mb-2">100% Secure</h3>
-                        <p>Dell API integration with top-tier security</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">📁</div>
-                        <h3 class="font-semibold mb-2">Instant Reports</h3>
-                        <p>Downloadable warranty reports</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">📆</div>
-                        <h3 class="font-semibold mb-2">Proactive Alerts</h3>
-                        <p>Renewal reminders you can trust</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">⚙️</div>
-                        <h3 class="font-semibold mb-2">MSP Ready</h3>
-                        <p>Integrates with IT management tools</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="text-4xl mb-4">🧾</div>
-                        <h3 class="font-semibold mb-2">Flexible Exports</h3>
-                        <p>CSV, PDF, and Excel support</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials -->
-        <section class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-bold mb-12">What Our Customers Say</h2>
-                <div class="max-w-2xl mx-auto">
-                    <blockquote class="bg-gray-100 p-8 rounded-lg italic">
-                        "This tool saved us hours during audit season. Now we never miss warranty renewals!"
-                    </blockquote>
-                    <p class="mt-4 font-semibold">— Rajiv S., IT Head at Wipro</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action Footer -->
-        <section class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-bold mb-6">Still managing warranties manually?</h2>
-                <p class="text-xl mb-8">Let our platform do it for you.</p>
-                <div class="flex justify-center space-x-4 mb-6">
-                    <a href="#" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 font-bold">
-                        👉 Upload Your Tags & Get a Report
-                    </a>
-                </div>
-                <p class="text-gray-200">Have questions? <a href="mailto:support@yourdomain.com" class="underline">support@yourdomain.com</a></p>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-gray-800 text-white py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div>
-                        <h3 class="font-bold mb-4">Dell Warranty Tracker</h3>
-                        <p class="text-gray-400">Simplifying Dell warranty management for IT professionals.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-4">Product</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#how-it-works" class="text-gray-300 hover:text-white">How It Works</a></li>
-                            <li><a href="#pricing" class="text-gray-300 hover:text-white">Pricing</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white">Start Free Trial</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-4">Support</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-300 hover:text-white">Help Center</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white">Contact Support</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white">API Documentation</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-4">Legal</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-                    <p class="text-gray-400">&copy; 2024 Dell Warranty Tracker. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
+        </div>
     </div>
-</body>
-</html>
+</section>
+
+<!-- Projects Section -->
+<section id="our-work" class="py-20 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Projects</h2>
+            <p class="text-xl text-gray-300">MVP's Built for Founder's and Startups</p>
+            <p class="text-sm text-gray-500 mt-4">
+                <svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                We sign NDAs with all clients, so most projects aren't public and we can't share much code. If a preview exists, it's usually just the frontend clone.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl">
+                <div class="h-48 bg-gradient-to-r from-blue-600 to-indigo-700 flex items-center justify-center">
+                  <a href="https://dellwarranty.azurewebsites.net">  <img src="{{ url_for('static', filename='images/warranty_management.png') }}" alt="Warranty Management" class="w-full h-full object-cover">
+                </a>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-300 mb-4">A SaaS platform for automated customer support and engagement.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">Flask</span>
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">Tailwind</span>
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl">
+                <div class="h-48 bg-gradient-to-r from-purple-600 to-pink-700 flex items-center justify-center">
+                    <a href="https://coindcxportfolioanalyzer.onrender.com/">
+                        <img src="{{ url_for('static', filename='images/portfolio_management.png') }}" alt="Portfolio Platform" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-300 mb-4">An  platform with integrated portfolio management.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-xs">Flask</span>
+                        <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-xs">Tailwind</span>
+                        <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-xs">SQLite</span>
+                    </div>
+                </div>
+            </div>
+            
+           
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="#contact" class="cta-button text-white font-medium py-3 px-8 rounded-full inline-block">
+                Start Your Project
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="py-20 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Transparent Pricing</h2>
+            <p class="text-xl text-gray-300">Choose the package that fits your needs</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Basic Package -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 hover:border-accent-orange">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-2">Basic MVP</h3>
+                    <p class="text-gray-400 mb-6">Perfect for validating your core idea</p>
+                    <div class="text-4xl font-bold mb-6">
+                        <span class="text-accent-orange">$4,999</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-orange mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Core feature implementation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-orange mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Basic user authentication</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-orange mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Responsive design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-orange mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>2 weeks delivery</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center py-3 px-6 border border-accent-orange text-accent-orange rounded-full hover:bg-accent-orange hover:text-white transition-all duration-300">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Standard Package -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border-2 border-accent-purple transform scale-105 shadow-xl">
+                <div class="bg-accent-purple text-white text-center py-2 text-sm font-medium">
+                    MOST POPULAR
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-2">Standard MVP</h3>
+                    <p class="text-gray-400 mb-6">Complete solution with all essentials</p>
+                    <div class="text-4xl font-bold mb-6">
+                        <span class="text-accent-purple">$9,999</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-purple mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>All Basic features</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-purple mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Advanced user roles</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-purple mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Payment integration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-purple mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Admin dashboard</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-purple mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>3 weeks delivery</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center py-3 px-6 bg-accent-purple text-white rounded-full hover:bg-purple-700 transition-all duration-300">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Premium Package -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 hover:border-accent-blue">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-2">Premium MVP</h3>
+                    <p class="text-gray-400 mb-6">Full-featured solution ready to scale</p>
+                    <div class="text-4xl font-bold mb-6">
+                        <span class="text-accent-blue">$14,999</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-blue mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>All Standard features</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-blue mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Advanced analytics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-blue mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>API documentation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-blue mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Third-party integrations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-accent-blue mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>4 weeks delivery</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center py-3 px-6 border border-accent-blue text-accent-blue rounded-full hover:bg-accent-blue hover:text-white transition-all duration-300">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-20 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">What Our Clients Say</h2>
+            <p class="text-xl text-gray-300">Hear from founders who've launched with us</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-800">
+                <div class="flex mb-4">
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </div>
+                <p class="text-gray-300 mb-6">"MVP Way delivered our platform in just 3 weeks. The quality exceeded our expectations and we were able to start getting user feedback immediately. Worth every penny."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                    <div class="ml-3">
+                        <p class="font-medium">Sarah Johnson</p>
+                        <p class="text-sm text-gray-400">CEO, TechStart</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-800">
+                <div class="flex mb-4">
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </div>
+                <p class="text-gray-300 mb-6">"After wasting months with another agency, MVP Way built our entire platform in just 21 days. The code quality is excellent and the documentation made it easy for our team to take over."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-500 to-teal-500"></div>
+                    <div class="ml-3">
+                        <p class="font-medium">Michael Chen</p>
+                        <p class="text-sm text-gray-400">Founder, DataFlow</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-800">
+                <div class="flex mb-4">
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </div>
+                <p class="text-gray-300 mb-6">"The team at MVP Way understood our vision immediately. They built a beautiful, functional MVP that helped us secure our seed round. Their focus on core features first saved us time and money."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500"></div>
+                    <div class="ml-3">
+                        <p class="font-medium">Emily Rodriguez</p>
+                        <p class="text-sm text-gray-400">Co-founder, HealthConnect</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faqs" class="py-20 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p class="text-xl text-gray-300">Everything you need to know about our MVP development process</p>
+        </div>
+        
+        <div class="max-w-3xl mx-auto">
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-xl font-semibold">How long does it take to build an MVP?</h3>
+                        <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-4">
+                        <p class="text-gray-300">Our standard timeline is 21 days from kickoff to delivery. Depending on the complexity of your project and the package you choose, this can range from 2-4 weeks. We prioritize speed without compromising quality.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-xl font-semibold">What technologies do you use?</h3>
+                        <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-4">
+                        <p class="text-gray-300">We use modern, scalable technologies including Flask, Tailwind CSS, and PostgreSQL for backend development. Our tech stack is chosen to ensure your MVP is not only functional but also scalable as your business grows.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-xl font-semibold">What happens after the MVP is delivered?</h3>
+                        <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-4">
+                        <p class="text-gray-300">After delivery, we provide 2 weeks of support to ensure everything is running smoothly. We also offer ongoing maintenance and development packages if you need continued support. Our goal is to set you up for successful market validation and future growth.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-xl font-semibold">Do you offer custom pricing for specific needs?</h3>
+                        <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-4">
+                        <p class="text-gray-300">Yes, we understand that every project is unique. While we have standard packages, we're happy to provide custom quotes based on your specific requirements. Book a call with us to discuss your project in detail.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-xl font-semibold">How do we get started?</h3>
+                        <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-4">
+                        <p class="text-gray-300">The process begins with a discovery call where we discuss your idea, requirements, and goals. After that, we'll provide a proposal and timeline. Once approved, we kick off development with regular updates throughout the process. Book a call today to get started!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 md:p-12 border border-gray-800">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Ready to Build Your MVP?</h2>
+                <p class="text-xl text-gray-300">Book a free consultation call to discuss your project</p>
+            </div>
+            
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-purple">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-purple">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Company</label>
+                    <input type="text" id="company" name="company" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-purple">
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-purple"></textarea>
+                </div>
+                
+                <div>
+                    <label for="budget" class="block text-sm font-medium text-gray-300 mb-2">Budget Range</label>
+                    <select id="budget" name="budget" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-purple">
+                        <option value="">Select a budget range</option>
+                        <option value="5k-10k">$5,000 - $10,000</option>
+                        <option value="10k-15k">$10,000 - $15,000</option>
+                        <option value="15k+">$15,000+</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <button type="submit" class="w-full cta-button text-white font-medium py-3 px-6 rounded-full text-lg">
+                        Book Your Call
+                    </button>
+                </div>
+            </form>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-400">Prefer email? Reach us at <a href="mailto:hello@mvpway.agency" class="text-accent-purple hover:underline">hello@mvpway.agency</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Simple FAQ toggle functionality
+    document.querySelectorAll('#faqs button').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+            
+            // Toggle content visibility
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+</script>
+{% endblock %}

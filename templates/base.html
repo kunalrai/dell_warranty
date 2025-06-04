@@ -1,26 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="NAWI6FnJJPzevtpdgKao-6qYPbUzsyJ-KCSpWTMSklU" />
-    <title>{% block title %}Dell Warranty Tracker{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>{% block title %}MVP Way | Build and Validate in 21 Days{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        'accent-green': '#4ade80',
+                        'accent-blue': '#3b82f6',
+                        'accent-orange': '#f97316',
+                        'accent-purple': '#a855f7',
+                        'accent-teal': '#14b8a6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', system-ui, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link:focus::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .nav-link-why::after { background-color: #4ade80; }
+        .nav-link-work::after { background-color: #3b82f6; }
+        .nav-link-pricing::after { background-color: #f97316; }
+        .nav-link-testimonials::after { background-color: #a855f7; }
+        .nav-link-faq::after { background-color: #14b8a6; }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #a855f7, #d946ef);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .cta-button:hover, .cta-button:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.4);
+        }
+        
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+        .feature-card:hover, .feature-card:focus-within {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Accessibility improvements */
+        :focus {
+            outline: 2px solid #a855f7;
+            outline-offset: 2px;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
 </head>
-<body class="bg-gray-50 text-gray-900">
-
-    {% include "header.html" %}
-    {% include "nav.html" %}
-
-    <main class="py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {% block content %}{% endblock %}
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-md shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="{{ url_for('index') }}" class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white font-bold text-xl">M</div>
+                    <span class="ml-2 text-xl font-bold">Agency</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="#why-us" class="nav-link nav-link-why text-white hover:text-accent-green focus:text-accent-green">Why Us?</a>
+                <a href="#our-work" class="nav-link nav-link-work text-white hover:text-accent-blue focus:text-accent-blue">Our Work</a>
+                <a href="#pricing" class="nav-link nav-link-pricing text-white hover:text-accent-orange focus:text-accent-orange">Pricing</a>
+                <a href="#testimonials" class="nav-link nav-link-testimonials text-white hover:text-accent-purple focus:text-accent-purple">Testimonials</a>
+                <a href="#faqs" class="nav-link nav-link-faq text-white hover:text-accent-teal focus:text-accent-teal">FAQ's</a>
+            </div>
+            
+            <a href="#contact" class="hidden md:block cta-button text-white font-medium py-2 px-6 rounded-full hover:scale-105 focus:scale-105">Book a Call</a>
+            
+            <!-- Mobile Navigation Toggle -->
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button" aria-label="Toggle mobile menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="md:hidden hidden bg-dark/95 backdrop-blur-md transition-all duration-300 ease-in-out" id="mobile-menu">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#why-us" class="block py-2 px-4 text-white hover:text-accent-green focus:text-accent-green">Why Us?</a>
+                <a href="#our-work" class="block py-2 px-4 text-white hover:text-accent-blue focus:text-accent-blue">Our Work</a>
+                <a href="#pricing" class="block py-2 px-4 text-white hover:text-accent-orange focus:text-accent-orange">Pricing</a>
+                <a href="#testimonials" class="block py-2 px-4 text-white hover:text-accent-purple focus:text-accent-purple">Testimonials</a>
+                <a href="#faqs" class="block py-2 px-4 text-white hover:text-accent-teal focus:text-accent-teal">FAQ's</a>
+                <a href="#contact" class="block cta-button text-white font-medium py-2 px-6 rounded-full text-center hover:scale-105 focus:scale-105">Book a Call</a>
+            </div>
         </div>
+    </header>
+
+    <main class="pt-20">
+        {% block content %}{% endblock %}
     </main>
 
-    {% include "footer.html" %}
+    <footer class="bg-dark py-12 mt-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white font-bold text-xl">M</div>
+                        <span class="ml-2 text-xl font-bold">MVP Way</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">We build MVPs that validate your idea in record time.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white focus:text-white" aria-label="Twitter">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white focus:text-white" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white focus:text-white" aria-label="LinkedIn">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#why-us" class="text-gray-400 hover:text-white focus:text-white">Why Us?</a></li>
+                        <li><a href="#our-work" class="text-gray-400 hover:text-white focus:text-white">Our Work</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white focus:text-white">Pricing</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white focus:text-white">Testimonials</a></li>
+                        <li><a href="#faqs" class="text-gray-400 hover:text-white focus:text-white">FAQ's</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <p class="text-gray-400 mb-2">Email: okunalrai@gmail.com</p>
+                    <p class="text-gray-400 mb-4">Phone: +91 8178567067</p>
+                    <a href="#contact" class="cta-button text-white font-medium py-2 px-6 rounded-full inline-block hover:scale-105 focus:scale-105">Book a Call</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>© {{ current_year }} MVP Way Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        // Mobile menu toggle with smooth transition
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('animate-slide-up');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('animate-slide-up');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
